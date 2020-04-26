@@ -1,6 +1,6 @@
-# todoappdemo1
+# TodoApp demo
 
-A demo for Todo App
+A first demo for Todo App main screen
 
 ## Getting Started
 

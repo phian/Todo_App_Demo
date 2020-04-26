@@ -74,7 +74,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   controller: _tabController,
                   indicator: BoxDecoration(
                     color: Color(0xFFB9F6CA),
-                    borderRadius: BorderRadius.only(topRight: Radius.circular(30), bottomLeft: Radius.circular(30)),
+//                    borderRadius: BorderRadius.only(topRight: Radius.circular(30), bottomLeft: Radius.circular(30)),
+                  borderRadius: BorderRadius.circular(30)
                   ),
                   tabs: <Widget>[
                     Tab(

@@ -1,3 +1,4 @@
+import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 import 'package:bubbled_navigation_bar/bubbled_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               child: Padding(
                 padding: const EdgeInsets.only(top: 7.0),
                 child: Container(
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
                   height: 250,
                   decoration: BoxDecoration(
                       color: Color(0xFFFAF3F0),
@@ -64,7 +68,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     children: <Widget>[
                       Container(
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(30))),
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(30))),
                         height: 250,
                         child: ClipRRect(
                           child: Image.asset(
@@ -80,8 +85,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           Row(
                             children: <Widget>[
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 20.0, top: 25.0),
+                                padding: const EdgeInsets.only(
+                                    left: 20.0, top: 25.0),
                                 child: Text(
                                   'Tuesday ',
                                   textDirection: TextDirection.ltr,
@@ -108,8 +113,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 55.0, top: 25.0),
+                                padding: const EdgeInsets.only(
+                                    left: 55.0, top: 25.0),
                                 child: Row(
                                   children: <Widget>[
                                     Container(
@@ -148,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 padding: const EdgeInsets.only(top: 20.0),
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
                                     Text(
                                       "S",
@@ -200,13 +205,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     left: 20.0, right: 20.0, top: 15.0),
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
                                     Container(
                                       width: 50,
                                       height: 70,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                          BorderRadius.circular(15),
                                           color: Color(0xFFBDBDBD)),
                                       child: Center(
                                         child: Text(
@@ -222,7 +228,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       width: 50,
                                       height: 70,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                          BorderRadius.circular(15),
                                           color: Color(0xFFBDBDBD)),
                                       child: Center(
                                         child: Text(
@@ -238,7 +245,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       width: 50,
                                       height: 70,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                          BorderRadius.circular(15),
                                           color: Color(0xFFBDBDBD)),
                                       child: Center(
                                         child: Text(
@@ -254,7 +262,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       width: 50,
                                       height: 70,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                          BorderRadius.circular(15),
                                           color: Color(0xFFBDBDBD)),
                                       child: Center(
                                         child: Text(
@@ -270,7 +279,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       width: 50,
                                       height: 70,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                          BorderRadius.circular(15),
                                           color: Color(0xFFBDBDBD)),
                                       child: Center(
                                         child: Text(
@@ -286,7 +296,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       width: 50,
                                       height: 70,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                          BorderRadius.circular(15),
                                           color: Color(0xFFBDBDBD)),
                                       child: Center(
                                         child: Text(
@@ -302,7 +313,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       width: 50,
                                       height: 70,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                          BorderRadius.circular(15),
                                           color: Color(0xFFBDBDBD)),
                                       child: Center(
                                         child: Text(
@@ -374,14 +386,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     ),
                     Tab(
                         child: Icon(
-                      Icons.event,
-                      size: 30,
-                    )),
+                          Icons.event,
+                          size: 30,
+                        )),
                     Tab(
                         child: Icon(
-                      Icons.assistant_photo,
-                      size: 30,
-                    )),
+                          Icons.assistant_photo,
+                          size: 30,
+                        )),
                   ],
                 ),
               ),
@@ -399,7 +411,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ],
         ),
       ),
-
       floatingActionButton: Container(
         width: 55.0,
         height: 55.0,
@@ -412,52 +423,62 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           },
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BubbledNavigationBar(
-        animationDuration: Duration(milliseconds: 500),
-        defaultBubbleColor: Colors.blue,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      bottomNavigationBar: BubbleBottomBar(
         backgroundColor: Color(0xFFFAF3F0),
-        initialIndex: 0,
-        onTap: (index) {},
-        items: <BubbledNavigationBarItem>[
-          BubbledNavigationBarItem(
-            icon: Icon(CupertinoIcons.tags, size: 30, color: Colors.red),
-            activeIcon:
-                Icon(CupertinoIcons.tags, size: 30, color: Colors.white),
-            title: Text(
-              'Tasks',
-              style: TextStyle(color: Colors.white, fontSize: 15),
-            ),
-          ),
-          BubbledNavigationBarItem(
-            icon: Icon(CupertinoIcons.check_mark_circled_solid,
-                size: 30, color: Colors.purple),
-            activeIcon: Icon(CupertinoIcons.check_mark_circled_solid,
-                size: 30, color: Colors.white),
-            title: Text(
-              'Goals',
-              style: TextStyle(color: Colors.white, fontSize: 15),
-            ),
-          ),
-          BubbledNavigationBarItem(
-            icon: Icon(CupertinoIcons.profile_circled,
-                size: 30, color: Colors.teal),
-            activeIcon: Icon(CupertinoIcons.profile_circled,
-                size: 30, color: Colors.white),
-            title: Text(
-              'Profile',
-              style: TextStyle(color: Colors.white, fontSize: 15),
-            ),
-          ),
-          BubbledNavigationBarItem(
-            icon: Icon(CupertinoIcons.settings, size: 30, color: Colors.cyan),
-            activeIcon:
-                Icon(CupertinoIcons.settings, size: 30, color: Colors.white),
-            title: Text(
-              'Settings',
-              style: TextStyle(color: Colors.white, fontSize: 15),
-            ),
-          ),
+        opacity: .2,
+        currentIndex: _lastFocusedIndex,
+        onTap: _changePage,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+        elevation: 8,
+        //new
+        fabLocation: BubbleBottomBarFabLocation.end,
+        //new
+        hasNotch: true,
+        //new, gives a cute ink effect
+        hasInk: true,
+        //optional, uses theme color if not specified
+        inkColor: Colors.black12,
+        items: <BubbleBottomBarItem>[
+          BubbleBottomBarItem(
+              backgroundColor: Colors.redAccent,
+              icon: Icon(CupertinoIcons.tags, size: 30, color: Colors.red),
+              activeIcon:
+              Icon(CupertinoIcons.tags, size: 30, color: Colors.indigo),
+              title: Text(
+                "Tasks",
+                style: TextStyle(color: Colors.red.shade900),)),
+          BubbleBottomBarItem(
+              backgroundColor: Colors.deepPurple,
+              icon: Icon(CupertinoIcons.check_mark_circled_solid,
+                  size: 30, color: Colors.purple),
+              activeIcon: Icon(CupertinoIcons.check_mark_circled_solid,
+                  size: 30, color: Colors.indigo),
+              title: Text("Goals",
+              style: TextStyle(
+                color: Colors.deepPurple.shade900
+              ),)),
+          BubbleBottomBarItem(
+              backgroundColor: Colors.teal,
+              icon: Icon(CupertinoIcons.profile_circled,
+                  size: 30, color: Colors.teal),
+              activeIcon: Icon(CupertinoIcons.profile_circled,
+                  size: 30, color: Colors.indigo),
+              title: Text(
+                "Profile",
+                style: TextStyle(
+                  color: Colors.teal.shade900,
+                ),
+              )),
+          BubbleBottomBarItem(
+              backgroundColor: Colors.green,
+              icon: Icon(CupertinoIcons.settings, size: 30, color: Colors.cyan),
+              activeIcon:
+              Icon(CupertinoIcons.settings, size: 30, color: Colors.indigo),
+              title: Text("Settings",
+              style: TextStyle(
+                color: Colors.green.shade900
+              ),))
         ],
       ),
     );

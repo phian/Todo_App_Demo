@@ -36,13 +36,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
-  bubbled_navigation_bar:
+  bubble_bottom_bar:
     dependency: "direct main"
     description:
-      name: bubbled_navigation_bar
+      name: bubble_bottom_bar
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.4"
+    version: "1.2.0"
   charcode:
     dependency: transitive
     description:
@@ -88,13 +88,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  fontisto_flutter:
-    dependency: "direct main"
-    description:
-      name: fontisto_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.5"
   google_fonts:
     dependency: "direct main"
     description:
@@ -207,13 +200,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
-  simple_gesture_detector:
-    dependency: transitive
-    description:
-      name: simple_gesture_detector
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.4"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -247,13 +233,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
-  table_calendar:
-    dependency: "direct main"
-    description:
-      name: table_calendar
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.2.3"
   term_glyph:
     dependency: transitive
     description:

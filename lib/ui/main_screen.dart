@@ -24,7 +24,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   TabController _tabController;
-  CalendarController _calendarController;
 
   @override
   void initState() {
@@ -32,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     super.initState();
 
     _tabController = TabController(vsync: this, length: 3);
-    _calendarController = CalendarController();
     _initCalendarTime();
   }
 

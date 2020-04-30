@@ -1,9 +1,7 @@
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
-import 'package:bubbled_navigation_bar/bubbled_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:table_calendar/table_calendar.dart';
 import './dates_list.dart';
 import 'tasks_icon.dart';
 

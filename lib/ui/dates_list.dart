@@ -33,7 +33,7 @@ class _DatesListScreenState extends State<DatesListScreen> {
                   style: GoogleFonts.courgette(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                      color: Colors.black),
                 ),
               ),
               SizedBox(
@@ -211,7 +211,7 @@ class _DatesListScreenState extends State<DatesListScreen> {
                   style: GoogleFonts.courgette(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                      color: Colors.black),
                 ),
               ),
               SizedBox(
@@ -389,7 +389,7 @@ class _DatesListScreenState extends State<DatesListScreen> {
                   style: GoogleFonts.courgette(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                      color: Colors.black),
                 ),
               ),
               SizedBox(

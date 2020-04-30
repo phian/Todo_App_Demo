@@ -1,9 +1,8 @@
-import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 import 'package:bubbled_navigation_bar/bubbled_navigation_bar.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:table_calendar/table_calendar.dart';
 import './dates_list.dart';
 import 'tasks_icon.dart';
 
@@ -13,6 +12,9 @@ MaterialColor _focusedIconColor2;
 MaterialColor _focusedIconColor3;
 MaterialColor _focusedIconColor4;
 int _lastFocusedIndex = 0; // biến để check xem Icon thứ mấy dc focus trc đó
+String _dayName,
+    _dateNumber,
+    _month; // variables for displaying time in Calendar
 
 GlobalKey _bottomMenuKey = GlobalKey();
 
@@ -23,6 +25,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   TabController _tabController;
+  CalendarController _calendarController;
 
   @override
   void initState() {
@@ -30,56 +33,338 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     super.initState();
 
     _tabController = TabController(vsync: this, length: 3);
+    _calendarController = CalendarController();
+    _initCalendarTime();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//        appBar: AppBar(
-//            backgroundColor: Color.fromRGBO(31, 28, 44, 10),
-//            title: Center(
-//              child: Text(
-//                'Your Tasks',
-//                textDirection: TextDirection.ltr,
-//                textAlign: TextAlign.center,
-//                style: GoogleFonts.courgette(
-//                  fontWeight: FontWeight.bold,
-//                  fontSize: 50,
-//                ),
-//              ),
-//            )),
-        body: Container(
-          color: Color(0xFFFAF3F0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Center(
-                child: Text(
-                  'Your Tasks',
-                  textDirection: TextDirection.ltr,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.courgette(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 50,
-                      color: Color(0xFF00E676)),
+      body: Container(
+        color: Color(0xFFFAF3F0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 7.0),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 250,
+                  decoration: BoxDecoration(
+                      color: Color(0xFFFAF3F0),
+                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 3.0,
+                          offset: Offset(0.0, 0.0),
+                        ),
+                      ]),
+                  child: Stack(
+                    children: <Widget>[
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(30))),
+                        height: 250,
+                        child: ClipRRect(
+                          child: Image.asset(
+                            'images/calendar_background.png',
+                            fit: BoxFit.fill,
+                          ),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 20.0, top: 25.0),
+                                child: Text(
+                                  'Tuesday ',
+                                  textDirection: TextDirection.ltr,
+                                  style: GoogleFonts.roboto(
+                                      fontSize: 30, color: Colors.white),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 25.0),
+                                child: Text(
+                                  '25,',
+                                  textDirection: TextDirection.ltr,
+                                  style: GoogleFonts.roboto(
+                                      fontSize: 30, color: Colors.white),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 25.0),
+                                child: Text(
+                                  ' Dec',
+                                  textDirection: TextDirection.ltr,
+                                  style: GoogleFonts.roboto(
+                                      fontSize: 30, color: Colors.white),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 55.0, top: 25.0),
+                                child: Row(
+                                  children: <Widget>[
+                                    Container(
+                                      width: 50,
+                                      height: 50,
+                                      child: FlatButton(
+                                        onPressed: () {},
+                                        child: Icon(
+                                          Icons.arrow_back_ios,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    Container(
+                                      width: 50,
+                                      height: 50,
+                                      child: FlatButton(
+                                        onPressed: () {},
+                                        child: Icon(
+                                          Icons.arrow_forward_ios,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(top: 20.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    Text(
+                                      "S",
+                                      textDirection: TextDirection.ltr,
+                                      style: GoogleFonts.roboto(
+                                          fontSize: 17, color: Colors.white),
+                                    ),
+                                    Text(
+                                      "M",
+                                      textDirection: TextDirection.ltr,
+                                      style: GoogleFonts.roboto(
+                                          fontSize: 17, color: Colors.white),
+                                    ),
+                                    Text(
+                                      "T",
+                                      textDirection: TextDirection.ltr,
+                                      style: GoogleFonts.roboto(
+                                          fontSize: 17, color: Colors.white),
+                                    ),
+                                    Text(
+                                      "W",
+                                      textDirection: TextDirection.ltr,
+                                      style: GoogleFonts.roboto(
+                                          fontSize: 17, color: Colors.white),
+                                    ),
+                                    Text(
+                                      "T",
+                                      textDirection: TextDirection.ltr,
+                                      style: GoogleFonts.roboto(
+                                          fontSize: 17, color: Colors.white),
+                                    ),
+                                    Text(
+                                      "F",
+                                      textDirection: TextDirection.ltr,
+                                      style: GoogleFonts.roboto(
+                                          fontSize: 17, color: Colors.white),
+                                    ),
+                                    Text(
+                                      "S",
+                                      textDirection: TextDirection.ltr,
+                                      style: GoogleFonts.roboto(
+                                          fontSize: 17, color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 20.0, right: 20.0, top: 15.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    Container(
+                                      width: 50,
+                                      height: 70,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(15),
+                                          color: Color(0xFFBDBDBD)),
+                                      child: Center(
+                                        child: Text(
+                                          "Ngày",
+                                          textDirection: TextDirection.ltr,
+                                          style: GoogleFonts.roboto(
+                                              fontSize: 17.0,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 50,
+                                      height: 70,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(15),
+                                          color: Color(0xFFBDBDBD)),
+                                      child: Center(
+                                        child: Text(
+                                          "Ngày",
+                                          textDirection: TextDirection.ltr,
+                                          style: GoogleFonts.roboto(
+                                              fontSize: 17.0,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 50,
+                                      height: 70,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(15),
+                                          color: Color(0xFFBDBDBD)),
+                                      child: Center(
+                                        child: Text(
+                                          "Ngày",
+                                          textDirection: TextDirection.ltr,
+                                          style: GoogleFonts.roboto(
+                                              fontSize: 17.0,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 50,
+                                      height: 70,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(15),
+                                          color: Color(0xFFBDBDBD)),
+                                      child: Center(
+                                        child: Text(
+                                          "Ngày",
+                                          textDirection: TextDirection.ltr,
+                                          style: GoogleFonts.roboto(
+                                              fontSize: 17.0,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 50,
+                                      height: 70,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(15),
+                                          color: Color(0xFFBDBDBD)),
+                                      child: Center(
+                                        child: Text(
+                                          "Ngày",
+                                          textDirection: TextDirection.ltr,
+                                          style: GoogleFonts.roboto(
+                                              fontSize: 17.0,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 50,
+                                      height: 70,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(15),
+                                          color: Color(0xFFBDBDBD)),
+                                      child: Center(
+                                        child: Text(
+                                          "Ngày",
+                                          textDirection: TextDirection.ltr,
+                                          style: GoogleFonts.roboto(
+                                              fontSize: 17.0,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 50,
+                                      height: 70,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(15),
+                                          color: Color(0xFFBDBDBD)),
+                                      child: Center(
+                                        child: Text(
+                                          "Ngày",
+                                          textDirection: TextDirection.ltr,
+                                          style: GoogleFonts.roboto(
+                                              fontSize: 17.0,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          Center(
+                            child: FlatButton(
+                              onPressed: () {},
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 5.0),
+                                child: Stack(
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.keyboard_arrow_down,
+                                      color: Colors.white,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 7.0),
+                                      child: Icon(
+                                        Icons.keyboard_arrow_down,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 15.0),
-                child: SizedBox(
-                  height: 50,
-                  child: TabBar(
-                    controller: _tabController,
-                    indicatorColor: Colors.transparent,
-                    unselectedLabelColor: Color(0xFF1B5E20),
-                    labelColor: Color(0xFF1B5E20),
-                    indicator: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Color(0xFF2E7D32), Color(0xFFB9F6CA)]),
-//                    color: Color(0xFFB9F6CA),
-//                    borderRadius: BorderRadius.only(topRight: Radius.circular(30), bottomLeft: Radius.circular(30)),
-                  borderRadius: BorderRadius.circular(50)
-                  ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 15.0),
+              child: SizedBox(
+                height: 50,
+                child: TabBar(
+                  controller: _tabController,
+                  indicatorColor: Colors.transparent,
+                  unselectedLabelColor: Color(0xFF4DB6AC),
+                  labelColor: Color(0xFF00695C),
+//                  indicator: BoxDecoration(
+//                      gradient: LinearGradient(
+//                          colors: [Color(0xFF2E7D32), Color(0xFFB9F6CA)]),
+////                    color: Color(0xFFB9F6CA),
+////                    borderRadius: BorderRadius.only(topRight: Radius.circular(30), bottomLeft: Radius.circular(30)),
+//                      borderRadius: BorderRadius.circular(50)
+//                  ),
                   tabs: <Widget>[
                     Tab(
                       child: Icon(
@@ -89,21 +374,18 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     ),
                     Tab(
                         child: Icon(
-                          Icons.event,
-                          size: 30,
-                        )
-                    ),
+                      Icons.event,
+                      size: 30,
+                    )),
                     Tab(
                         child: Icon(
-                          Icons.assistant_photo,
-                          size: 30,
-                        )
-                    ),
+                      Icons.assistant_photo,
+                      size: 30,
+                    )),
                   ],
                 ),
               ),
             ),
-
             Expanded(
               child: TabBarView(
                 controller: _tabController,
@@ -136,29 +418,45 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         defaultBubbleColor: Colors.blue,
         backgroundColor: Color(0xFFFAF3F0),
         initialIndex: 0,
-        onTap: (index) {
-          // handle tap
-        },
+        onTap: (index) {},
         items: <BubbledNavigationBarItem>[
           BubbledNavigationBarItem(
-            icon:       Icon(CupertinoIcons.tags, size: 30, color: Colors.red),
-            activeIcon: Icon(CupertinoIcons.tags, size: 30, color: Colors.white),
-            title: Text('Tasks', style: TextStyle(color: Colors.white, fontSize: 15),),
+            icon: Icon(CupertinoIcons.tags, size: 30, color: Colors.red),
+            activeIcon:
+                Icon(CupertinoIcons.tags, size: 30, color: Colors.white),
+            title: Text(
+              'Tasks',
+              style: TextStyle(color: Colors.white, fontSize: 15),
+            ),
           ),
           BubbledNavigationBarItem(
-            icon:       Icon(CupertinoIcons.check_mark_circled_solid, size: 30, color: Colors.purple),
-            activeIcon: Icon(CupertinoIcons.check_mark_circled_solid, size: 30, color: Colors.white),
-            title: Text('Goals', style: TextStyle(color: Colors.white, fontSize: 15),),
+            icon: Icon(CupertinoIcons.check_mark_circled_solid,
+                size: 30, color: Colors.purple),
+            activeIcon: Icon(CupertinoIcons.check_mark_circled_solid,
+                size: 30, color: Colors.white),
+            title: Text(
+              'Goals',
+              style: TextStyle(color: Colors.white, fontSize: 15),
+            ),
           ),
           BubbledNavigationBarItem(
-            icon:       Icon(CupertinoIcons.profile_circled, size: 30, color: Colors.teal),
-            activeIcon: Icon(CupertinoIcons.profile_circled, size: 30, color: Colors.white),
-            title: Text('Profile', style: TextStyle(color: Colors.white, fontSize: 15),),
+            icon: Icon(CupertinoIcons.profile_circled,
+                size: 30, color: Colors.teal),
+            activeIcon: Icon(CupertinoIcons.profile_circled,
+                size: 30, color: Colors.white),
+            title: Text(
+              'Profile',
+              style: TextStyle(color: Colors.white, fontSize: 15),
+            ),
           ),
           BubbledNavigationBarItem(
-            icon:       Icon(CupertinoIcons.settings, size: 30, color: Colors.cyan),
-            activeIcon: Icon(CupertinoIcons.settings, size: 30, color: Colors.white),
-            title: Text('Settings', style: TextStyle(color: Colors.white, fontSize: 15),),
+            icon: Icon(CupertinoIcons.settings, size: 30, color: Colors.cyan),
+            activeIcon:
+                Icon(CupertinoIcons.settings, size: 30, color: Colors.white),
+            title: Text(
+              'Settings',
+              style: TextStyle(color: Colors.white, fontSize: 15),
+            ),
           ),
         ],
       ),
@@ -170,32 +468,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       _lastFocusedIndex = value;
     });
   }
-}
 
-/*
-CurvedNavigationBar(
-        height: 60,
-        animationDuration: Duration(milliseconds: 500),
-        backgroundColor: Color.fromRGBO(46, 35, 49, 10),
-        key: _bottomMenuKey,
-        items: <Widget>[
-          Icon(
-            Icons.list,
-            size: 40,
-          ),
-          Icon(
-            Icons.check,
-            size: 40,
-          ),
-          Icon(
-            Icons.person,
-            size: 40,
-          ),
-          Icon(
-            Icons.settings,
-            size: 40,
-          )
-        ],
-        onTap: (index) {},
-      ),
-* */
+  void _initCalendarTime() {}
+}

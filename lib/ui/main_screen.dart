@@ -417,13 +417,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       for (int i = 0; i < 7; i++) {
         double opacity = 0;
         if (_increaseClickedTime == 0) { // Nếu đang ở tuần hiện tại
-          if (i == 0) {
-            opacity = 0.85;
-            _dateCardList.add(_dateCard(_weekDates[i].toString(), opacity));
-          } else {
-            opacity = 0.3;
-            _dateCardList.add(_dateCard(_weekDates[i].toString(), opacity));
-          }
+          opacity = i == 0 ? 0.85 : 0.3;
+          _dateCardList.add(_dateCard(_weekDates[i].toString(), opacity));
         } else {
           opacity = 0.3;
           _dateCardList.add(_dateCard(_weekDates[i].toString(), opacity));
@@ -451,13 +446,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       for (int i = 0; i < 7; i++) {
         double opacity = 0;
         if (_increaseClickedTime == 0) { // Nếu đang ở tuần hiện tại
-          if (i == 0) {
-            opacity = 0.85;
-            _dateCardList.add(_dateCard(_weekDates[i].toString(), opacity));
-          } else {
-            opacity = 0.3;
-            _dateCardList.add(_dateCard(_weekDates[i].toString(), opacity));
-          }
+          opacity = i == 0 ? 0.85 : 0.3;
+          _dateCardList.add(_dateCard(_weekDates[i].toString(), opacity));
         } else {
           opacity = 0.3;
           _dateCardList.add(_dateCard(_weekDates[i].toString(), opacity));

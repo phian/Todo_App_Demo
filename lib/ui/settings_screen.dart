@@ -9,9 +9,9 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      top: MediaQuery.of(context).size.height / 2 - 80.0,
-      left: MediaQuery.of(context).size.width / 2 - 120.0,
+    return Container(
+      color: Color(0xFFFAF3F0),
+      padding: EdgeInsets.only(top: MediaQuery.of(context).size.width - 120.0, left: MediaQuery.of(context).size.width / 2 - 120.0),
       child: Column(
         children: <Widget>[
           Container(

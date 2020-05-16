@@ -23,9 +23,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 11.0, top: 15.0),
                       child: FlatButton(
-                        onPressed: () {
-                          _onWillPop();
-                        },
+                        onPressed: _onWillPop,
                         child: Icon(
                           Icons.arrow_back,
                           color: Colors.black,

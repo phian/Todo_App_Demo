@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todoappdemo/ui/main_screen.dart';
 
+int _lastFocusScreen;
+
 class AddTaskScreen extends StatefulWidget {
+  AddTaskScreen([int lastFocusScreen]) {
+    _lastFocusScreen = lastFocusScreen;
+  }
+
   @override
   _AddTaskScreenState createState() => _AddTaskScreenState();
 }
@@ -63,7 +69,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         actions: <Widget>[
           FlatButton(
             onPressed: () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => HomeScreen(),
+              builder: (context) => HomeScreen(_lastFocusScreen),
             )),
             child: new Text('Yes'),
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todoappdemo/ui/about_screen.dart';
+import 'package:todoappdemo/ui/help_screen.dart';
 import 'package:todoappdemo/ui/search_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -89,6 +90,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           InkWell(
             onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => HelpScreen(),
+              ));
               _changeFocusMenuWidgetColor(2, false);
             },
             onTapCancel: () {

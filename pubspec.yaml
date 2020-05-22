@@ -54,6 +54,7 @@ flutter:
     - images/goals.gif
     - images/todo_app_icon.png
     - images/search.gif
+    - images/help.gif
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -84,4 +85,8 @@ flutter:
   fonts:
     - family: TasksIcon
       fonts:
-        - asset: icons/TasksIcon.ttf
+        - asset: fonts/TasksIcon.ttf
+    - family:  FacebookIcon
+      fonts:
+        - asset: fonts/FacebookIcon.ttf
+

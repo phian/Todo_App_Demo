@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todoappdemo/presentation/forward_arrow_icon.dart';
 import 'package:todoappdemo/ui/getting_started_screen.dart';

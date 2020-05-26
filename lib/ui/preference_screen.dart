@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todoappdemo/ui/main_screen.dart';
@@ -35,10 +36,10 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
                     child: FlatButton(
                       onPressed: () {
 //                      if (Navigator.canPop(context)) {
-//                        Navigator.pop(context);
-//                      } else {
-//                        SystemNavigator.pop();
-//                      }
+////                        Navigator.pop(context);
+////                      } else {
+////                        SystemNavigator.pop();
+////                      }
 
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => HomeScreen(isBack: true, lastFocusedScreen: _lastFocusedScreen,),

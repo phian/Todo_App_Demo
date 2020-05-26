@@ -10,21 +10,26 @@ import 'package:todoappdemo/ui/tasks_list_screen.dart';
 import 'package:todoappdemo/ui/tasks_screen.dart';
 
 GlobalKey _bottomMenuKey = GlobalKey();
-bool _isBack = false;
+bool _isBack, _isFirstTime;
 int _lastFocusedScreen;
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key key, bool isBack = false, int lastFocusedScreen})
-      : super(key: key) {
+  final bool isBack;
+  final int lastFocusedScreen;
+  HomeScreen({this.isBack, this.lastFocusedScreen}) {
     _isBack = isBack;
     _lastFocusedScreen = lastFocusedScreen;
+
+    if (_isBack == false) {
+      _isFirstTime = true;
+    }
   }
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>{
   List<Widget> _screenList = [
     TasksScreen(),
     GoalsScreen(),
@@ -38,9 +43,11 @@ class _HomeScreenState extends State<HomeScreen> {
   double _marginTop =
       0.0; // Hai biến để thay đổi margin khi ng dùng chọn màn hình settings
   double _marginBottom = 0.0;
-  double _transitionX =
+  double _transitionXForMainScreen =
       0.0; // Biến để dời screen hiện tại qua bên trái màn hình
   double _blur; // Biến để thay đổi độ đậm của shadowbox
+  double
+      _transitionXForMenuScreen; // Biến để dời menu screen qua lại khi ng dùng chọn menu option
 
   @override
   void initState() {
@@ -49,27 +56,55 @@ class _HomeScreenState extends State<HomeScreen> {
 
     _blur = 0.0;
 
-    // check xem có phải ng dùng vừa từ screen khác trong setting screen menu về hay không?
-    setState(() {
-      if (_isBack) {
-        _settingsScreenIndex = 3;
-        _changePage(_settingsScreenIndex);
+    _checkIsBack();
+  }
 
-        _lastFocusedIconIndex = _lastFocusedScreen;
-      }
-    });
+  // Hàm để check nếu ng dùng quay về main screen từ các screen trong setting
+  void _checkIsBack() {
+    // check xem có phải ng dùng vừa từ screen khác trong setting screen menu về hay không?
+    if (_isBack) {
+      _settingsScreenIndex = 3;
+      _changePage(_settingsScreenIndex);
+
+      _lastFocusedIconIndex = _lastFocusedScreen;
+    }
+  }
+
+  // check nếu app mới khởi động lần đầu
+  void _checkFirstTime() {
+    if (_isFirstTime) {
+      _lastFocusedIconIndex = 0;
+      _settingsScreenIndex = -1;
+
+      _isFirstTime = false;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    _checkFirstTime();
+
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
         body: Stack(
           overflow: Overflow.clip,
           children: <Widget>[
-            SettingsScreen(
-              lastFocusScreen: _lastFocusedIconIndex,
+            Container(
+              color: Color(0xFFFAF3F0),
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 300),
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.width - 120.0,
+                    left: MediaQuery.of(context).size.width / 2 - 120.0),
+                transform: Matrix4.translationValues(
+                    _transitionXForMenuScreen, 0.0, 0.0),
+                child: SettingsScreen(
+                  lastFocusScreen: 0,
+                ),
+              ),
             ),
             AnimatedContainer(
               duration: Duration(milliseconds: 300),
@@ -80,7 +115,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              transform: Matrix4.translationValues(_transitionX, 0.0, 0.0),
+              transform: Matrix4.translationValues(
+                  _transitionXForMainScreen, 0.0, 0.0),
               margin: EdgeInsets.only(top: _marginTop, bottom: _marginBottom),
               child: InkWell(
                 child: _screenList[_lastFocusedIconIndex],
@@ -89,7 +125,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     _changePage(
                         _lastFocusedIconIndex); // Quay lại màn hình trc đó ng dùng focus
 
-                    _transitionX = 0.0;
+                    _transitionXForMainScreen = 0.0;
+                    _transitionXForMenuScreen =
+                        MediaQuery.of(context).size.width;
 
                     _marginTop = 0.0;
                     _marginBottom = 0.0;
@@ -189,7 +227,8 @@ class _HomeScreenState extends State<HomeScreen> {
         _lastFocusedIconIndex = value;
         _settingsScreenIndex = -1;
 
-        _transitionX = 0.0;
+        _transitionXForMainScreen = 0.0;
+        _transitionXForMenuScreen = MediaQuery.of(context).size.width;
 
         _marginTop = 0.0;
         _marginBottom = 0.0;
@@ -198,9 +237,11 @@ class _HomeScreenState extends State<HomeScreen> {
       } else {
         _settingsScreenIndex = 3;
 
-        _transitionX = -350.0;
+        _transitionXForMainScreen = -350.0;
         _marginTop = 60;
         _marginBottom = 60;
+
+        _transitionXForMenuScreen = 0.0;
 
         _blur = 2.5;
       }

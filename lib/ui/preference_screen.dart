@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todoappdemo/ui/main_screen.dart';
 
+import '../data/data.dart';
+
 int _lastFocusedScreen;
 
 class PreferenceScreen extends StatefulWidget {
@@ -20,8 +22,9 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
     return WillPopScope(
       // ignore: missing_return
       onWillPop: () async {
+        Data data = Data(isBack: true, lastFocusedScreen: _lastFocusedScreen);
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => HomeScreen(isBack: true, lastFocusedScreen: _lastFocusedScreen,),
+          builder: (context) => HomeScreen(data: data,),
         ));
       },
       child: Scaffold(
@@ -41,8 +44,9 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
 ////                        SystemNavigator.pop();
 ////                      }
 
+                        Data data = Data(isBack: true, lastFocusedScreen: _lastFocusedScreen);
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => HomeScreen(isBack: true, lastFocusedScreen: _lastFocusedScreen,),
+                          builder: (context) => HomeScreen(data: data,),
                         ));
                       },
                       child: Icon(

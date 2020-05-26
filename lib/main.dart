@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoappdemo/data/data.dart';
 import './ui/main_screen.dart';
 import 'dart:async';
 
@@ -18,11 +19,13 @@ class _MyAppState extends State<MyApp> {
     // TODO: implement initState
     super.initState();
 
+    Data data = Data(isBack: false, lastFocusedScreen: 0);
+
     Future.delayed(
       Duration(seconds: 2),
       () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => HomeScreen(),
+          builder: (context) => HomeScreen(data: data,),
         ));
       },
     );

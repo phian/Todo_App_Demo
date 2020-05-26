@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:todoappdemo/data/data.dart';
 import 'package:todoappdemo/ui/add_task_screen.dart';
 import 'package:todoappdemo/ui/goals_screen.dart';
 import 'package:todoappdemo/ui/settings_screen.dart';
@@ -10,18 +11,21 @@ import 'package:todoappdemo/ui/tasks_list_screen.dart';
 import 'package:todoappdemo/ui/tasks_screen.dart';
 
 GlobalKey _bottomMenuKey = GlobalKey();
-bool _isBack, _isFirstTime;
-int _lastFocusedScreen;
+// bool _isBack, _isFirstTime;
+// int _lastFocusedScreen;
 
 class HomeScreen extends StatefulWidget {
-  final bool isBack;
-  final int lastFocusedScreen;
-  HomeScreen({this.isBack, this.lastFocusedScreen}) {
-    _isBack = isBack;
-    _lastFocusedScreen = lastFocusedScreen;
+  final Data data;
+  // final bool isBack;
+  // final int lastFocusedScreen;
+  bool isFirstTime = false;
 
-    if (_isBack == false) {
-      _isFirstTime = true;
+  HomeScreen({this.data}) {
+    // this.isBack = isBack;
+    // this.lastFocusedScreen = lastFocusedScreen;
+
+    if (this.data.isBack == false) {
+      this.isFirstTime = true;
     }
   }
 
@@ -47,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen>{
       0.0; // Biến để dời screen hiện tại qua bên trái màn hình
   double _blur; // Biến để thay đổi độ đậm của shadowbox
   double
-      _transitionXForMenuScreen; // Biến để dời menu screen qua lại khi ng dùng chọn menu option
+      _transitionXForMenuScreen = 0.0; // Biến để dời menu screen qua lại khi ng dùng chọn menu option
 
   @override
   void initState() {
@@ -62,21 +66,21 @@ class _HomeScreenState extends State<HomeScreen>{
   // Hàm để check nếu ng dùng quay về main screen từ các screen trong setting
   void _checkIsBack() {
     // check xem có phải ng dùng vừa từ screen khác trong setting screen menu về hay không?
-    if (_isBack) {
+    if (widget.data.isBack) {
       _settingsScreenIndex = 3;
       _changePage(_settingsScreenIndex);
 
-      _lastFocusedIconIndex = _lastFocusedScreen;
+      _lastFocusedIconIndex = widget.data.lastFocusedScreen;
     }
   }
 
   // check nếu app mới khởi động lần đầu
   void _checkFirstTime() {
-    if (_isFirstTime) {
+    if (widget.isFirstTime) {
       _lastFocusedIconIndex = 0;
       _settingsScreenIndex = -1;
 
-      _isFirstTime = false;
+      widget.isFirstTime = false;
     }
   }
 
@@ -102,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen>{
                 transform: Matrix4.translationValues(
                     _transitionXForMenuScreen, 0.0, 0.0),
                 child: SettingsScreen(
-                  lastFocusScreen: 0,
+                  lastFocusScreen: _lastFocusedIconIndex,
                 ),
               ),
             ),

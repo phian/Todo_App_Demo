@@ -194,7 +194,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   onTap: () async {
                                     _transitionXForMenuScreen =
                                         -(MediaQuery.of(context).size.width -
-                                            (MediaQuery.of(context).size.width -
+                                            (MediaQuery.of(context)
+                                                    .size
+                                                    .width -
                                                 (MediaQuery.of(context)
                                                         .size
                                                         .width *
@@ -204,12 +206,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     Navigator.pushReplacement(
                                         context,
                                         PageTransition(
-                                            type:
-                                                PageTransitionType.rightToLeft,
+                                            type: PageTransitionType
+                                                .rightToLeft,
                                             child: PreferenceScreen(
                                               lastFocusedScreen:
                                                   _lastFocusedIconIndex,
-                                            )));
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 300)));
 
                                     _changeFocusMenuWidgetColor(0, false);
                                   },
@@ -230,7 +234,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   onTap: () async {
                                     _transitionXForMenuScreen =
                                         -(MediaQuery.of(context).size.width -
-                                            (MediaQuery.of(context).size.width -
+                                            (MediaQuery.of(context)
+                                                    .size
+                                                    .width -
                                                 (MediaQuery.of(context)
                                                         .size
                                                         .width *
@@ -240,12 +246,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     Navigator.pushReplacement(
                                         context,
                                         PageTransition(
-                                            type:
-                                                PageTransitionType.rightToLeft,
+                                            type: PageTransitionType
+                                                .rightToLeft,
                                             child: SearchScreen(
                                               lastFocusedScreen:
                                                   _lastFocusedIconIndex,
-                                            )));
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 300)));
 
                                     _changeFocusMenuWidgetColor(1, false);
                                   },
@@ -266,7 +274,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   onTap: () async {
                                     _transitionXForMenuScreen =
                                         -(MediaQuery.of(context).size.width -
-                                            (MediaQuery.of(context).size.width -
+                                            (MediaQuery.of(context)
+                                                    .size
+                                                    .width -
                                                 (MediaQuery.of(context)
                                                         .size
                                                         .width *
@@ -276,12 +286,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     Navigator.pushReplacement(
                                         context,
                                         PageTransition(
-                                            type:
-                                                PageTransitionType.rightToLeft,
+                                            type: PageTransitionType
+                                                .rightToLeft,
                                             child: HelpScreen(
                                               lastFocusedScreen:
                                                   _lastFocusedIconIndex,
-                                            )));
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 300)));
 
                                     _changeFocusMenuWidgetColor(2, false);
                                   },
@@ -302,7 +314,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   onTap: () async {
                                     _transitionXForMenuScreen =
                                         -(MediaQuery.of(context).size.width -
-                                            (MediaQuery.of(context).size.width -
+                                            (MediaQuery.of(context)
+                                                    .size
+                                                    .width -
                                                 (MediaQuery.of(context)
                                                         .size
                                                         .width *
@@ -312,12 +326,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     Navigator.pushReplacement(
                                         context,
                                         PageTransition(
-                                            type:
-                                                PageTransitionType.rightToLeft,
+                                            type: PageTransitionType
+                                                .rightToLeft,
                                             child: AboutScreen(
                                               lastFocusedScreen:
                                                   _lastFocusedIconIndex,
-                                            )));
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 300)));
 
                                     _changeFocusMenuWidgetColor(3, false);
                                   },
@@ -338,13 +354,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   onTap: () async {
                                     _transitionXForMainScreen =
                                         -(MediaQuery.of(context).size.width +
-                                            (MediaQuery.of(context).size.width *
+                                            (MediaQuery.of(context)
+                                                    .size
+                                                    .width *
                                                 0.75));
 
                                     _settingScreenOpacity = 0.0;
 
-                                    Future.delayed(Duration(milliseconds: 300),
-                                        () {
+                                    Future.delayed(
+                                        Duration(milliseconds: 300), () {
                                       setState(() {
                                         _mainScreenOpacity = 0.0;
                                       });
@@ -380,7 +398,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   onTap: () async {
                                     _transitionXForMenuScreen =
                                         -(MediaQuery.of(context).size.width -
-                                            (MediaQuery.of(context).size.width -
+                                            (MediaQuery.of(context)
+                                                    .size
+                                                    .width -
                                                 (MediaQuery.of(context)
                                                         .size
                                                         .width *
@@ -390,12 +410,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     Navigator.pushReplacement(
                                         context,
                                         PageTransition(
-                                            type:
-                                                PageTransitionType.rightToLeft,
+                                            type: PageTransitionType
+                                                .rightToLeft,
                                             child: AccountScreen(
                                               lastFocusedScreen:
                                                   _lastFocusedIconIndex,
-                                            )));
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 300)));
 
                                     _changeFocusMenuWidgetColor(5, false);
                                   },

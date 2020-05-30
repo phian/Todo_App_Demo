@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:todoappdemo/data/data.dart';
 import 'package:todoappdemo/ui/about_screen.dart';
@@ -180,12 +179,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               children: <Widget>[
                                 Container(
                                   width: MediaQuery.of(context).size.width,
-                                  child: Text(
-                                    "DOIT",
-                                    style: GoogleFonts.abhayaLibre(
-                                        fontSize: 35.0,
-                                        fontWeight: FontWeight.bold),
-                                  ),
+                                  child: Text("DOIT",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                          fontSize: 35.0,
+                                          fontFamily: 'AbhayaLibre')),
                                 ),
                                 SizedBox(
                                   height: 10.0,
@@ -194,9 +192,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   onTap: () async {
                                     _transitionXForMenuScreen =
                                         -(MediaQuery.of(context).size.width -
-                                            (MediaQuery.of(context)
-                                                    .size
-                                                    .width -
+                                            (MediaQuery.of(context).size.width -
                                                 (MediaQuery.of(context)
                                                         .size
                                                         .width *
@@ -206,8 +202,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     Navigator.pushReplacement(
                                         context,
                                         PageTransition(
-                                            type: PageTransitionType
-                                                .rightToLeft,
+                                            type:
+                                                PageTransitionType.rightToLeft,
                                             child: PreferenceScreen(
                                               lastFocusedScreen:
                                                   _lastFocusedIconIndex,
@@ -234,9 +230,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   onTap: () async {
                                     _transitionXForMenuScreen =
                                         -(MediaQuery.of(context).size.width -
-                                            (MediaQuery.of(context)
-                                                    .size
-                                                    .width -
+                                            (MediaQuery.of(context).size.width -
                                                 (MediaQuery.of(context)
                                                         .size
                                                         .width *
@@ -246,8 +240,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     Navigator.pushReplacement(
                                         context,
                                         PageTransition(
-                                            type: PageTransitionType
-                                                .rightToLeft,
+                                            type:
+                                                PageTransitionType.rightToLeft,
                                             child: SearchScreen(
                                               lastFocusedScreen:
                                                   _lastFocusedIconIndex,
@@ -274,9 +268,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   onTap: () async {
                                     _transitionXForMenuScreen =
                                         -(MediaQuery.of(context).size.width -
-                                            (MediaQuery.of(context)
-                                                    .size
-                                                    .width -
+                                            (MediaQuery.of(context).size.width -
                                                 (MediaQuery.of(context)
                                                         .size
                                                         .width *
@@ -286,8 +278,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     Navigator.pushReplacement(
                                         context,
                                         PageTransition(
-                                            type: PageTransitionType
-                                                .rightToLeft,
+                                            type:
+                                                PageTransitionType.rightToLeft,
                                             child: HelpScreen(
                                               lastFocusedScreen:
                                                   _lastFocusedIconIndex,
@@ -314,9 +306,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   onTap: () async {
                                     _transitionXForMenuScreen =
                                         -(MediaQuery.of(context).size.width -
-                                            (MediaQuery.of(context)
-                                                    .size
-                                                    .width -
+                                            (MediaQuery.of(context).size.width -
                                                 (MediaQuery.of(context)
                                                         .size
                                                         .width *
@@ -326,8 +316,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     Navigator.pushReplacement(
                                         context,
                                         PageTransition(
-                                            type: PageTransitionType
-                                                .rightToLeft,
+                                            type:
+                                                PageTransitionType.rightToLeft,
                                             child: AboutScreen(
                                               lastFocusedScreen:
                                                   _lastFocusedIconIndex,
@@ -354,15 +344,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   onTap: () async {
                                     _transitionXForMainScreen =
                                         -(MediaQuery.of(context).size.width +
-                                            (MediaQuery.of(context)
-                                                    .size
-                                                    .width *
+                                            (MediaQuery.of(context).size.width *
                                                 0.75));
 
                                     _settingScreenOpacity = 0.0;
 
-                                    Future.delayed(
-                                        Duration(milliseconds: 300), () {
+                                    Future.delayed(Duration(milliseconds: 300),
+                                        () {
                                       setState(() {
                                         _mainScreenOpacity = 0.0;
                                       });
@@ -398,9 +386,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   onTap: () async {
                                     _transitionXForMenuScreen =
                                         -(MediaQuery.of(context).size.width -
-                                            (MediaQuery.of(context)
-                                                    .size
-                                                    .width -
+                                            (MediaQuery.of(context).size.width -
                                                 (MediaQuery.of(context)
                                                         .size
                                                         .width *
@@ -410,8 +396,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     Navigator.pushReplacement(
                                         context,
                                         PageTransition(
-                                            type: PageTransitionType
-                                                .rightToLeft,
+                                            type:
+                                                PageTransitionType.rightToLeft,
                                             child: AccountScreen(
                                               lastFocusedScreen:
                                                   _lastFocusedIconIndex,
@@ -652,7 +638,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             padding: const EdgeInsets.only(left: 5.0),
             child: Text(
               "$menuText",
-              style: GoogleFonts.abhayaLibre(fontSize: 20.0, color: textColor),
+              style: TextStyle(fontSize: 20.0, fontFamily: 'AbhayaLibre'),
             ),
           ),
         ],

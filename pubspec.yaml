@@ -19,7 +19,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^0.5.0+1
   animated_text_kit: ^2.0.0
   intl: ^0.16.0
   bubble_bottom_bar: ^1.2.0
@@ -94,3 +93,22 @@ flutter:
     - family:  ForwardArrow
       fonts:
         - asset: fonts/ForwardArrow.ttf
+    - family: AbhayaLibre
+      fonts:
+        - asset: fonts/AbhayaLibre-Medium.ttf
+        - asset: fonts/AbhayaLibre-Bold.ttf
+    - family: Adamina
+      fonts:
+        - asset: fonts/Adamina-Regular.ttf
+    - family: RobotoSlab
+      fonts:
+        - asset: fonts/RobotoSlab-VariableFont_wght.ttf
+    - family: AbrilFatface
+      fonts:
+        - asset: fonts/AbrilFatface-Regular.ttf
+    - family: RobotoCondensed
+      fonts:
+        - asset: fonts/RobotoCondensed-Regular.ttf
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto-Regular.ttf

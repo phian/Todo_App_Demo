@@ -3,16 +3,15 @@ import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:todoappdemo/data/repeat_choice_data.dart';
 import 'package:todoappdemo/set_up_widgets/repeat_sheet.dart';
-import 'package:todoappdemo/ui/add_task_page.dart';
-import './repeat_sheet.dart';
 
 class ScheduleSheet extends StatefulWidget {
   DateTime schedulePickedDate;
   final DateTime initTime;
   RepeatChoiceData repeatChoiceData = RepeatChoiceData();
 
-  ScheduleSheet({this.initTime}) {
+  ScheduleSheet({this.initTime, RepeatChoiceData data}) {
     schedulePickedDate = initTime;
+    repeatChoiceData = data;
   }
 
   @override
@@ -31,7 +30,7 @@ class _ScheduleSheetState extends State<ScheduleSheet> {
   String _scheduleChoseDateText;
   DateTime _scheduleChoseDateTime;
 
-  RepeatSheet _repeatSheet = RepeatSheet(initChoiceData: RepeatChoiceData(),);
+  RepeatSheet _repeatSheet;
 
   @override
   void initState() {
@@ -43,6 +42,10 @@ class _ScheduleSheetState extends State<ScheduleSheet> {
         : widget.schedulePickedDate;
     _scheduleChoseDateText =
         DateFormat("EEEEEEEE dd MMMM yyyyy").format(_scheduleChoseDateTime);
+
+    _repeatSheet = RepeatSheet(
+      initChoiceData: widget.repeatChoiceData,
+    );
   }
 
   @override

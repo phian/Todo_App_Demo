@@ -240,6 +240,10 @@ class _ScheduleSheetState extends State<ScheduleSheet> {
         builder: (context) => _repeatSheet).whenComplete(() {
       widget.repeatChoiceData = _repeatSheet.repeatChoiceData;
     });
+
+    setState(() {
+      isFirstTime = false;
+    });
   }
 
   // Hàm để khởi tạo vị trí theo ngày mà trc đó ng dùng chọn

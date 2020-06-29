@@ -8,6 +8,7 @@ import 'package:todoappdemo/data/special_repeat_data.dart';
 import 'package:todoappdemo/set_up_widgets/list_sheet.dart';
 import 'package:todoappdemo/set_up_widgets/schedule_sheet.dart';
 import 'package:todoappdemo/set_up_widgets/special_schedule_sheet.dart';
+import 'package:todoappdemo/ui_variables/task_screen_variables.dart';
 
 import 'main_screen.dart';
 
@@ -304,8 +305,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
         return _listSheet;
       },
     ).whenComplete(() {
-      _choseListIndex = _listSheet.choseListIndex;
-      print(_choseListIndex);
+      _choseListIndex = choseListIndex;
+      print("chose list index: $_choseListIndex");
     });
   }
 
